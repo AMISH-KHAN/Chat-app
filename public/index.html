@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>tic tac toe</title>
+</head>
+<body>
+    <main>
+        <div class="grid main-container">
+            <div class="turn">Player</div>
+            <div class="actions">Action</div>
+            <div class="square-con">
+
+                <div id="0" class="square shadow"></div>
+                <div id="1" class="square shadow"></div>
+                <div id="2" class="square shadow"></div>
+                <div id="3" class="square shadow"></div>
+                <div id="4" class="square shadow"></div>
+                <div id="5" class="square shadow"></div>
+                <div id="6" class="square shadow"></div>
+                <div id="7" class="square shadow"></div>
+                <div id="8" class="square shadow"></div>
+            </div>
+            
+            <button id="reset">Reset</button>
+        </div>
+    </main>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>
