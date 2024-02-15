@@ -5,22 +5,41 @@ const squares = document.querySelectorAll(".square")
 const actions = document.querySelector(".actions")
 const turn = document.querySelector(".turn")
 const reset = document.querySelector("#reset")
+const playerName=document.getElementById("name")
+const oppName=document.getElementById("oppname")
+
+
 let count = 0;
 let arr=["","","","","","","","",""]
 
-const p1=prompt("enter player 1 name")
-const p2=prompt("enter player 2 name")
+let name=prompt("enter player  name")
 
+if (name === "") {
+    alert("enter name")
+}
+else {
+    socket.emit("login", { name: name })
+}
 
-turn.innerHTML=`${p1} turns`
+let p2;
+let value;
+console.log(name)
+socket.on("login", (playersArray) => {
+    
+    name === playersArray[0].p1.p1name ? p2 = playersArray[0].p2.p2name : p2 = playersArray[0].p1.p1name
+    name === playersArray[0].p1.p1name ? value = playersArray[0].p1.p1value : value = playersArray[0].p2.p2value
+
+    playerName.innerText=name+ ` playing as ${value}`
+    oppName.innerText=p2 
+        
+})
+turn.innerHTML=`${name} turns`
 squares.forEach((square) => {
     square.addEventListener("click", () => {
         var index = parseInt(square.id)
         if (count <= 8 && arr[index]!=="O") {
             if (count % 2 == 0) {
-                
-                
-                turn.innerHTML=`${p2} turn`
+                turn.innerHTML=`${name} turn`
                 console.log("xturns")
                 square.classList.add("cross")
                 arr[index] = "X"
@@ -28,7 +47,7 @@ squares.forEach((square) => {
             
             }
             else {
-                turn.innerHTML=`${p1} turn`
+                turn.innerHTML=`${name} turn`
                 if (arr[index] !== "X") {
 
                 socket.emit("turn",index,count)
@@ -62,7 +81,7 @@ squares.forEach((square) => {
 })
 
 reset.addEventListener("click", () => {
-    turn.innerHTML = `${p1} turn`
+    turn.innerHTML = `${name} turn`
     actions.innerHTML="Action"
     count=0
     arr = ["", "", "", "", "", "", "", "", ""]
