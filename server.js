@@ -4,7 +4,7 @@ const { createServer } = require("http")
 const { join } = require("path")
 const { Server } = require("socket.io")
 
-
+const PORT=process.env.PORT||3000
 
 const app = express()
 
@@ -109,6 +109,6 @@ io.on("disconnect", () => {
     console.log(playersArray)
 })
 
-server.listen(3000, () => {
-    console.log("Server runing at http://localhost:3000")
+server.listen(PORT, () => {
+    console.log(`Server runing at http://localhost:${PORT}`)
 })
