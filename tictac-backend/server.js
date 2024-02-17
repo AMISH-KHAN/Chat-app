@@ -12,20 +12,24 @@ const server = createServer(app)
 
 const io = new Server(server)
 
-app.use(express.static(join(__dirname, "public")));
+app.use(express.static(join(__dirname, "../frontend/public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname,"./public/index.html"))
+    res.sendFile(join(__dirname,"../frontend/public/index.html"))
 })
 
 let count = 0;
 let players=[]
-let playersArray=[]
+let playersArray = []
+
+
+// check when there is the connection
+
 io.on("connection", (socket) => {
     
     socket.on("login", (data) => {
-        // io.emit("login",name)
-        console.log(players)
+        // execute the following commands when client emits login event
+        
         if (data.name !== null) {
             players.push(data.name)
         }
@@ -65,7 +69,7 @@ io.on("connection", (socket) => {
                 square:data.squares
             }
             count++
-            console.log("chla")
+            // console.log("chla")
             
         }
         else if(data.name === playersArray[0].p2.p2name && count%2!=0) {
@@ -88,26 +92,27 @@ io.on("connection", (socket) => {
                 square:data.squares
             }
         }
-        console.log(newobj)
+        // console.log(newobj)
         io.emit("move",newobj)
     })
     
     socket.on("gameOver", (data) => {
         count = 9
-        console.log("gameover data: ",data)
+        // console.log("gameover data: ",data)
     })
     
     socket.on("reset", (data) => {
         count = 0
         socket.emit("reset",data)
     })
+    socket.on("disconnect", () => {
+        // console.log("disconnected")
+        count=0
+        playersArray.pop()
+        // console.log(playersArray)
+    })
 })
 
-io.on("disconnect", () => {
-    console.log("disconnected")
-    playersArray.pop()
-    console.log(playersArray)
-})
 
 server.listen(PORT, () => {
     console.log(`Server runing at http://localhost:${PORT}`)
