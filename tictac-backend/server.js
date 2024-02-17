@@ -12,10 +12,10 @@ const server = createServer(app)
 
 const io = new Server(server)
 
-app.use(express.static(join(__dirname, "./../frontend/public")));
+app.use(express.static(join(__dirname, "./public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname,"./../frontend/public/index.html"))
+    res.sendFile(join(__dirname,"./public/index.html"))
 })
 
 let count = 0;

@@ -1,0 +1,162 @@
+body{
+    background-color: #231f20;
+}
+
+.logo{
+    padding: 2rem 0rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo>img{
+    width: 15rem;
+}
+
+.form{
+    width: 70%;
+    margin: auto;
+}
+
+form>input{
+    width: 79%;
+    margin: 2rem auto;
+    display: block;
+    padding: 7px 1rem;
+    outline: none;
+    border: none;
+    border-radius: 35px;
+    font-size: 20px;
+}
+
+form>button{
+    width: 80%;
+    padding: 12px;
+    border: none;
+    border-radius: 34px;
+    font-size: 22px;
+    color: white;
+    display: block;
+    margin: auto;
+    background: #f7a21a;
+}
+
+
+.name{
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+
+.loading{
+    margin: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.loading>h3{
+    text-align: center;
+    color: navajowhite;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+
+}
+
+.loading>img{
+    margin: auto;
+    width: 3rem;
+}
+
+.turn{
+    grid-area:turn;
+}
+.square-con{
+
+    grid-area: square;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+.square{
+    width: 6rem;
+    height: 5rem;
+    background-color: white;
+    text-align: inherit;
+}
+
+#reset{
+    height: 2.5rem;
+    background: #f7a21a;
+    border: none;
+    grid-area: reset;
+    border-radius: 34px;
+    cursor: pointer;
+    color: white;
+    font-size: 1rem;
+    font-weight: bolder;
+}
+
+.grid{
+    display: grid;
+    grid:
+        'turn turn menu'
+        'square square square'
+        'square square square'
+        'square square square'
+        'reset reset reset'
+    ;
+    grid-gap: 10px;
+  /* background-color: #2196F3; */
+  padding: 10px;
+}
+
+.details{
+    width: 22rem;
+    /* border: 2px solid; */
+    margin: auto;
+    font-size: 1.25rem;
+    color: white;
+    padding: 1rem;
+}
+
+.grid > div {
+    background-color: rgb(247 162 26);
+    text-align: center;
+    padding: 20px 0;
+    font-size: 30px;
+    color: white;
+  }
+.main-container{
+    padding: 0rem;
+    width: 22rem;
+    /* border:2px solid; */
+    height: 28rem;
+    margin:  auto;
+    background: #231f20;
+    border: none;
+}
+.cross{
+    background: url("/images/cross.png") no-repeat center;
+    background-size: 5rem;
+}
+.zero{
+    background: url("/images/zero.png") no-repeat center;
+    background-size: 5rem;
+
+}
+
+
+@media screen and (max-width: 380px) {
+   
+    .main-container{
+        width: 100%;
+    }
+    .square{
+        width: 90%;
+    }
+    .details{
+        width: 100%;
+        padding: 1rem 0;
+    }
+  }
