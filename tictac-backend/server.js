@@ -12,10 +12,10 @@ const server = createServer(app)
 
 const io = new Server(server)
 
-app.use(express.static(join(__dirname, "../frontend/public")));
+app.use(express.static(join(__dirname, "./../frontend/public")));
 
 app.get("/", (req, res) => {
-    res.sendFile(join(__dirname,"../frontend/public/index.html"))
+    res.sendFile(join(__dirname,"./../frontend/public/index.html"))
 })
 
 let count = 0;
@@ -29,7 +29,7 @@ io.on("connection", (socket) => {
     
     socket.on("login", (data) => {
         // execute the following commands when client emits login event
-        
+
         if (data.name !== null) {
             players.push(data.name)
         }
